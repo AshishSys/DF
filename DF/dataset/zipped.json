@@ -1,0 +1,30 @@
+{
+	"name": "zipped",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorageforAdventorWorks",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"filename": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@concat(dataset().filename,'.zip')",
+					"type": "Expression"
+				},
+				"container": "zipped"
+			},
+			"compression": {
+				"type": "ZipDeflate",
+				"level": "Optimal"
+			}
+		}
+	}
+}
